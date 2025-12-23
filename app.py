@@ -9,7 +9,7 @@ from datetime import datetime
 app = Flask(__name__, static_folder='.', static_url_path='')
 
 # Load model
-model_name = "Qwen/Qwen2.5-0.5B-Instruct"
+model_name = "google/gemma-3-1b-it"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForCausalLM.from_pretrained(
     model_name,

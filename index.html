@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>BandarAbbas AI</title>
+    <style>
+        body { font-family: 'Vazir', sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .chat-container { background: white; border-radius: 20px; padding: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); height: 70vh; overflow-y: auto; }
+        .message { margin: 10px 0; padding: 12px 16px; border-radius: 18px; max-width: 80%; }
+        .user { background: #007bff; color: white; margin-left: auto; }
+        .ai { background: #f1f3f4; color: #333; }
+        .input-group { display: flex; gap: 10px; margin-top: 20px; }
+        input { flex: 1; padding: 12px 20px; border: 2px solid #e0e0e0; border-radius: 25px; font-size: 16px; }
+        button { padding: 12px 24px; background: #007bff; color: white; border: none; border-radius: 25px; cursor: pointer; }
+        .logo { text-align: center; font-size: 2em; color: white; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="logo">🏝️ BandarAbbas AI</div>
+    <div id="chatContainer" class="chat-container"></div>
+    <div class="input-group">
+        <input type="text" id="messageInput" placeholder="سؤالت رو بپرس... (رستوران، هتل، خرید)">
+        <button onclick="sendMessage()">بفرست 🚀</button>
+    </div>
+
+    <script>
+        const API_URL = "https://bandarabbas-ai.onrender.com/api/chat";
+        const chatContainer = document.getElementById('chatContainer');
+        const messageInput = document.getElementById('messageInput');
+
+        function addMessage(message, isUser = false) {
+            const div = document.createElement('div');
+            div.className = `message ${isUser ? 'user' : 'ai'}`;
+            div.textContent = message;
+            chatContainer.appendChild(div);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message) return;
+
+            addMessage(message, true);
+            messageInput.value = '';
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message })
+                });
+                const data = await response.json();
+                addMessage(data.reply);
+            } catch (error) {
+                addMessage('خطا در ارتباط با سرور 😅');
+            }
+        }
+
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        addMessage('سلام! BandarAbbas AI آماده است 😊 رستوران دریایی، هتل، خرید یا تفریح تو بندرعباس چی می‌خوای؟');
+    </script>
+</body>
+</html>

@@ -1,66 +1,349 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>BandarAbbas AI</title>
-    <style>
-        body { font-family: 'Vazir', sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .chat-container { background: white; border-radius: 20px; padding: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); height: 70vh; overflow-y: auto; }
-        .message { margin: 10px 0; padding: 12px 16px; border-radius: 18px; max-width: 80%; }
-        .user { background: #007bff; color: white; margin-left: auto; }
-        .ai { background: #f1f3f4; color: #333; }
-        .input-group { display: flex; gap: 10px; margin-top: 20px; }
-        input { flex: 1; padding: 12px 20px; border: 2px solid #e0e0e0; border-radius: 25px; font-size: 16px; }
-        button { padding: 12px 24px; background: #007bff; color: white; border: none; border-radius: 25px; cursor: pointer; }
-        .logo { text-align: center; font-size: 2em; color: white; margin-bottom: 20px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>چاپ و تبلیغات پارسیک | Parsik Print &amp; Advertising</title>
+<meta name="description" content="آژانس چاپ و تبلیغات پارسیک در بندرعباس — طراحی هویت بصری، چاپ افست و دیجیتال، تابلو و چلنیوم، بسته‌بندی و هدایای تبلیغاتی.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <div class="logo">🏝️ BandarAbbas AI</div>
-    <div id="chatContainer" class="chat-container"></div>
-    <div class="input-group">
-        <input type="text" id="messageInput" placeholder="سؤالت رو بپرس... (رستوران، هتل، خرید)">
-        <button onclick="sendMessage()">بفرست 🚀</button>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="#hero" class="brand" aria-label="چاپ و تبلیغات پارسیک">
+      <svg class="brand-mark" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+        <rect x="6" y="6" width="32" height="32" rx="3" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M14 30V14h10a5 5 0 0 1 0 10h-10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="31" cy="30" r="1.6" fill="currentColor"/>
+        <circle cx="26.4" cy="30" r="1.6" fill="currentColor" opacity=".65"/>
+        <circle cx="21.8" cy="30" r="1.6" fill="currentColor" opacity=".4"/>
+      </svg>
+      <span class="brand-text">
+        <strong>پارسیک</strong>
+        <em>PARSIK · PRINT &amp; AD</em>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="ناوبری اصلی">
+      <a href="#hero" class="nav-link is-active">خانه</a>
+      <a href="#portfolio" class="nav-link">نمونه‌کارها</a>
+      <a href="#services" class="nav-link">خدمات ما</a>
+      <a href="#about" class="nav-link">درباره ما</a>
+      <a href="#contact" class="nav-link">تماس با ما</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="tel:09175477500" class="call-btn">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <span class="call-text"><small>تماس مستقیم</small><bdi>۰۹۱۷ ۵۴۷ ۷۵۰۰</bdi></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="منو" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile drawer -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav class="mobile-nav">
+    <a href="#hero">خانه</a>
+    <a href="#portfolio">نمونه‌کارها</a>
+    <a href="#services">خدمات ما</a>
+    <a href="#about">درباره ما</a>
+    <a href="#contact">تماس با ما</a>
+  </nav>
+  <a href="tel:09175477500" class="mobile-call">۰۹۱۷ ۵۴۷ ۷۵۰۰</a>
+  <p class="mobile-note">بندرعباس · هر روز از ۹ تا ۲۱</p>
+</div>
+
+<main>
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-media" aria-hidden="true">
+    <img src="assets/img/hero.jpg" alt="" fetchpriority="high">
+    <div class="hero-overlay"></div>
+    <div class="hero-halftone"></div>
+  </div>
+
+  <div class="container hero-content">
+    <p class="hero-eyebrow reveal">آژانس چاپ و تبلیغات پارسیک — بندرعباس</p>
+    <h1 class="hero-title reveal">از ایده تا چاپ،<br>با وسواسِ یک هنرمند</h1>
+    <p class="hero-sub reveal">هویت بصری، چاپ افست و دیجیتال، تابلوهای شهری و بسته‌بندیِ حرفه‌ای —
+    همه‌چیز زیر یک سقف، با کیفیتی که برند شما لایق آن است.</p>
+    <div class="hero-cta reveal">
+      <a href="#portfolio" class="btn btn-gold">مشاهده نمونه‌کارها</a>
+      <a href="#contact" class="btn btn-ghost">درخواست مشاوره</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="container stats-grid">
+      <div class="stat reveal"><span class="stat-num" data-count="12" data-suffix="+">۰</span><span class="stat-label">سال تجربه</span></div>
+      <div class="stat reveal"><span class="stat-num" data-count="850" data-suffix="+">۰</span><span class="stat-label">پروژه موفق</span></div>
+      <div class="stat reveal"><span class="stat-num" data-count="98" data-suffix="٪">۰</span><span class="stat-label">رضایت مشتری</span></div>
+      <div class="stat reveal"><span class="stat-num" data-count="40" data-suffix="+">۰</span><span class="stat-label">برند همکار</span></div>
+    </div>
+  </div>
+
+  <a href="#services" class="scroll-cue" aria-label="اسکرول به پایین"><span></span></a>
+</section>
+
+<!-- ══════════════ SERVICES ══════════════ -->
+<section class="section services" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow"><span class="eyebrow-latin">SERVICES</span>خدمات ما</p>
+      <h2 class="section-title">هر آنچه برند شما برای دیده‌شدن نیاز دارد</h2>
+      <p class="section-sub">از کارت ویزیت تا تابلوی مغازه شما؛ خدمات پارسیک، زنجیره‌ی کامل چاپ و تبلیغات را پوشش می‌دهد.</p>
     </div>
 
-    <script>
-        const API_URL = "https://bandarabbas-ai.onrender.com/api/chat";
-        const chatContainer = document.getElementById('chatContainer');
-        const messageInput = document.getElementById('messageInput');
+    <div class="services-grid">
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M7 8V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v3M5 8h14a1 1 0 0 1 1 1v7a2 2 0 0 1-2 2h-1v3H7v-3H6a2 2 0 0 1-2-2V9a1 1 0 0 1 1-1Zm2 10h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>چاپ افست و دیجیتال</h3>
+        <p>کارت ویزیت، سربرگ، بروشور، فولدر و مقلب با رنگ‌بندی دقیق و کاغذهای درجه‌یک.</p>
+      </article>
 
-        function addMessage(message, isUser = false) {
-            const div = document.createElement('div');
-            div.className = `message ${isUser ? 'user' : 'ai'}`;
-            div.textContent = message;
-            chatContainer.appendChild(div);
-            chatContainer.scrollTop = chatContainer.scrollHeight;
-        }
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="m12 3 2.5 6.3L21 10l-5 4.4 1.6 6.6L12 17.6 6.4 21 8 14.4 3 10l6.5-.7L12 3Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>طراحی هویت بصری</h3>
+        <p>طراحی لوگو، برندبوک و ست اداری؛ هویتی منسجم که در هر نقطه‌ی تماس می‌درخشد.</p>
+      </article>
 
-        async function sendMessage() {
-            const message = messageInput.value.trim();
-            if (!message) return;
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="12" rx="1" stroke="currentColor" stroke-width="1.4"/><path d="M7 16v4M12 16v3M17 16v4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M7 8h6M7 11h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <h3>تابلو و چلنیوم</h3>
+        <p>تابلوی مغازه، چلنیوم فلت، حروف برجسته و باکس‌نور با نصب حرفه‌ای در سراسر شهر.</p>
+      </article>
 
-            addMessage(message, true);
-            messageInput.value = '';
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8Z" stroke="currentColor" stroke-width="1.4"/><path d="M4 8V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3M9 12h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <h3>بنر، استند و فضای نمایشگاهی</h3>
+        <p>رول‌آپ، استند تاشو، بنر انعطاف‌پذیر و غرفه‌های نمایشگاهی با مونتاژ سریع.</p>
+      </article>
 
-            try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message })
-                });
-                const data = await response.json();
-                addMessage(data.reply);
-            } catch (error) {
-                addMessage('خطا در ارتباط با سرور 😅');
-            }
-        }
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3 4 7v10l8 4 8-4V7l-8-4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M4 7l8 4 8-4M12 11v10" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>لیبل و بسته‌بندی</h3>
+        <p>لیبل محصول، جعبه و کارتن با برش خاص و پلمپِ سلفون؛ محصول شما، شایسته‌ی ویترین.</p>
+      </article>
 
-        messageInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') sendMessage();
-        });
+      <article class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="5" stroke="currentColor" stroke-width="1.4"/><path d="m13 13 7 7M16 16l2-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <h3>سیلک و هدایای تبلیغاتی</h3>
+        <p>چاپ سیلک روی لیوان، پارچه و اقلام تبلیغاتی؛ هدیه‌ای که نام برند شما را می‌ماند.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-        addMessage('سلام! BandarAbbas AI آماده است 😊 رستوران دریایی، هتل، خرید یا تفریح تو بندرعباس چی می‌خوای؟');
-    </script>
+<!-- ══════════════ PROCESS ══════════════ -->
+<section class="section section-dark process">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow eyebrow-light"><span class="eyebrow-latin">PROCESS</span>فرآیند همکاری</p>
+      <h2 class="section-title">چهار قدم تا چاپِ بی‌نقص</h2>
+    </div>
+    <ol class="process-steps">
+      <li class="process-step reveal"><span class="step-num">۰۱</span><h3>مشاوره و ایده‌پردازی</h3><p>نیاز شما را می‌شنویم و مطابق بودجه، بهترین راهکار را پیشنهاد می‌دهیم.</p></li>
+      <li class="process-step reveal"><span class="step-num">۰۲</span><h3>طراحی و پیش‌نمایش</h3><p>طرح اولیه را می‌بینید، نظر می‌دهید و تا رضایت کامل اصلاح می‌کنیم.</p></li>
+      <li class="process-step reveal"><span class="step-num">۰۳</span><h3>چاپ و تولید</h3><p>با دستگاه‌های به‌روز و رنگ‌های استاندارد، پروژه را اجرا می‌کنیم.</p></li>
+      <li class="process-step reveal"><span class="step-num">۰۴</span><h3>تحویل و پشتیبانی</h3><p>تحویل به‌موقع، نصب در محل و پشتیبانی پس از سفارش.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══════════════ PORTFOLIO ══════════════ -->
+<section class="section portfolio" id="portfolio">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow"><span class="eyebrow-latin">PORTFOLIO</span>نمونه‌کارها</p>
+      <h2 class="section-title">کاری که از ما تعریف می‌سازد</h2>
+      <p class="section-sub">گزیده‌ای از پروژه‌های اخیر پارسیک برای برندهای محلی و ملی.</p>
+    </div>
+
+    <div class="filter-bar reveal" role="tablist" aria-label="فیلتر نمونه‌کارها">
+      <button class="chip is-active" data-filter="all">همه</button>
+      <button class="chip" data-filter="print">چاپ</button>
+      <button class="chip" data-filter="sign">تابلو و فضاسازی</button>
+      <button class="chip" data-filter="packaging">بسته‌بندی</button>
+      <button class="chip" data-filter="brand">برندینگ</button>
+    </div>
+
+    <div class="portfolio-grid" id="portfolioGrid">
+      <a href="#contact" class="work-card reveal" data-category="print">
+        <figure><img src="assets/img/work-1.jpg" alt="پروژه چاپ افست" loading="lazy"></figure>
+        <div class="work-meta"><span class="work-tag">چاپ</span><h3>ست اداری هتل کیش‌بین‌المللی</h3><p>سربرگ، فولدر و کارت ویزیت با طلاکوب سرد</p></div>
+      </a>
+      <a href="#contact" class="work-card reveal" data-category="brand">
+        <figure><img src="assets/img/work-2.jpg" alt="هویت بصری برند" loading="lazy"></figure>
+        <div class="work-meta"><span class="work-tag">برندینگ</span><h3>هویت بصری کافه دُر</h3><p>لوگو، منو و لیوان اختصاصی</p></div>
+      </a>
+      <a href="#contact" class="work-card reveal" data-category="sign">
+        <figure><img src="assets/img/work-3.jpg" alt="تابلوی چلنیوم" loading="lazy"></figure>
+        <div class="work-meta"><span class="work-tag">تابلو</span><h3>تابلوی چلنیوم گالری نقره</h3><p>حروف برجسته با نور مخفی</p></div>
+      </a>
+      <a href="#contact" class="work-card reveal" data-category="packaging">
+        <figure><img src="assets/img/work-4.jpg" alt="بسته‌بندی محصول" loading="lazy"></figure>
+        <div class="work-meta"><span class="work-tag">بسته‌بندی</span><h3>لیبل و جعبه عطر رزِ نقره</h3><p>لیبل متالیک و جعبه سلفون‌کشیده</p></div>
+      </a>
+      <a href="#contact" class="work-card reveal" data-category="print">
+        <figure><img src="assets/img/work-5.jpg" alt="چاپ مطبوعات" loading="lazy"></figure>
+        <div class="work-meta"><span class="work-tag">چاپ</span><h3>کاتالوگ سه‌هزار نسخه‌ای صنایع دریا</h3><p>افست چهاررنگ روی کاغذ گلاسه</p></div>
+      </a>
+      <a href="#contact" class="work-card reveal" data-category="sign">
+        <figure><img src="assets/img/work-6.jpg" alt="استند نمایشگاهی" loading="lazy"></figure>
+        <div class="work-meta"><span class="work-tag">چاپ</span><h3>چاپ رول لیبل صنعتی</h3><p>چندرنگ روی فلم سلفون با برش رول</p></div>
+      </a>
+    </div>
+
+    <div class="portfolio-cta reveal">
+      <p>پروژه‌ای در ذهن دارید؟ بیایید درباره‌اش حرف بزنیم.</p>
+      <a href="#contact" class="btn btn-outline">شروع گفتگو</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ABOUT ══════════════ -->
+<section class="section about" id="about">
+  <div class="container about-grid">
+    <div class="about-media reveal">
+      <img src="assets/img/about.jpg" alt="کارگاه چاپ پارسیک" loading="lazy">
+      <div class="about-badge">
+        <span class="badge-num">۱۲</span>
+        <span>سال تجربه<br>در صنعت چاپ</span>
+      </div>
+    </div>
+    <div class="about-body">
+      <div class="section-head head-start reveal">
+        <p class="eyebrow"><span class="eyebrow-latin">ABOUT US</span>درباره ما</p>
+        <h2 class="section-title">چاپخانه‌ای که به جزئیات اعتماد دارد</h2>
+      </div>
+      <p class="reveal">پارسیک از سال ۱۳۹۲ در بندرعباس کار خود را با یک دستگاه چاپ دیجیتال کوچک آغاز کرد؛ امروز با پشتوانه‌ی
+      بیش از دو دهه تجربه، ماشین‌آلات افست و دیجیتال به‌روز و تیمی از طراحان و چاپ‌کاران حرفه‌ای، شریک اعتماد
+      صدها کسب‌وکار در جنوب کشور است.</p>
+      <p class="reveal">ما به چاپ به‌چشم صنعتِ دقیق نگاه می‌کنیم: رنگ درست، کاغذ درست، زمان درست. برای همین است که
+      مشتریان ما بار اول برمی‌گردند — و بار دوم هم.</p>
+      <ul class="about-list reveal">
+        <li>مشاوره و بازدید رایگان از محل پروژه</li>
+        <li>کنترل کیفیت رنگ با پروفایل استاندارد</li>
+        <li>تحویل به‌موقع، حتی برای سفارش‌های فوری</li>
+        <li>ضمانت بازچاپ در صورت مغایرت کیفیت</li>
+      </ul>
+      <div class="about-actions reveal">
+        <a href="#contact" class="btn btn-primary">گفتگو با کارشناسان ما</a>
+        <a href="tel:09175477500" class="about-phone"><bdi>۰۹۱۷ ۵۴۷ ۷۵۰۰</bdi><small>خط مستقیم کارشناسی</small></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section class="section section-dark contact" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-info">
+      <div class="section-head head-start reveal">
+        <p class="eyebrow eyebrow-light"><span class="eyebrow-latin">CONTACT</span>تماس با ما</p>
+        <h2 class="section-title">بگذارید پروژه‌ی بعدی‌تان را با هم بسازیم</h2>
+        <p class="section-sub">فرم را پر کنید یا مستقیم تماس بگیرید؛ کارشناس ما در کمتر از یک روز کاری پاسخ می‌دهد.</p>
+      </div>
+      <ul class="contact-list reveal">
+        <li>
+          <span class="contact-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+          <div><small>تلفن و واتس‌اپ</small><a href="tel:09175477500"><bdi>۰۹۱۷ ۵۴۷ ۷۵۰۰</bdi></a></div>
+        </li>
+        <li>
+          <span class="contact-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          <div><small>آدرس کارگاه و دفتر</small><span>بندرعباس، بلوار امام خمینی، مجتمع تجاری خلیج‌فارس، طبقه ۲، واحد ۲۰۸</span></div>
+        </li>
+        <li>
+          <span class="contact-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+          <div><small>ساعات کاری</small><span>شنبه تا پنجشنبه ۹ تا ۲۱ · جمعه با هماهنگی قبلی</span></div>
+        </li>
+      </ul>
+      <div class="contact-social reveal">
+        <a href="#" aria-label="اینستاگرام پارسیک"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="تلگرام پارسیک"><svg viewBox="0 0 24 24" fill="none"><path d="m21 4-3.2 15.5c-.2 1-.8 1.2-1.6.8l-4.6-3.4-2.2 2.2c-.3.3-.5.5-1 .5l.4-5 8.6-7.8c.4-.3-.1-.5-.6-.2L6.2 11.9 1.5 10.4c-1-.3-1-1 .2-1.4L19.6 2.6c.8-.3 1.6.2 1.4 1.4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></a>
+        <a href="#" aria-label="واتس‌اپ پارسیک"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z" stroke="currentColor" stroke-width="1.5"/><path d="M9 8.5c.5 3 3 5.5 6 6l1.5-1.5-2-1.5-1 .8c-.8-.4-1.9-1.5-2.3-2.3l.8-1L10.5 7 9 8.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+
+    <form class="contact-form reveal" id="contactForm" novalidate>
+      <div class="form-row">
+        <label>نام و نام خانوادگی<input type="text" name="name" required placeholder="مثلاً: سارا محمدی"></label>
+        <label>شماره تماس<input type="tel" name="phone" required inputmode="tel" placeholder="۰۹۱۲ ··· ····"></label>
+      </div>
+      <label>زمینه‌ی سفارش
+        <select name="service">
+          <option>چاپ افست و دیجیتال</option>
+          <option>طراحی هویت بصری</option>
+          <option>تابلو و چلنیوم</option>
+          <option>بنر، استند و نمایشگاهی</option>
+          <option>لیبل و بسته‌بندی</option>
+          <option>سیلک و هدایای تبلیغاتی</option>
+          <option>سایر موارد</option>
+        </select>
+      </label>
+      <label>توضیح کوتاه پروژه<textarea name="message" rows="4" placeholder="مثلاً: دو هزار کارت ویزیت، دو طرف چاپ، تحویل تا پایان هفته"></textarea></label>
+      <button type="submit" class="btn btn-gold btn-block" id="formSubmit">ارسال درخواست</button>
+      <p class="form-status" id="formStatus" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="#hero" class="brand brand-footer" aria-label="پارسیک">
+        <svg class="brand-mark" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+          <rect x="6" y="6" width="32" height="32" rx="3" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M14 30V14h10a5 5 0 0 1 0 10h-10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="31" cy="30" r="1.6" fill="currentColor"/>
+          <circle cx="26.4" cy="30" r="1.6" fill="currentColor" opacity=".65"/>
+          <circle cx="21.8" cy="30" r="1.6" fill="currentColor" opacity=".4"/>
+        </svg>
+        <span class="brand-text"><strong>پارسیک</strong><em>PARSIK · PRINT &amp; AD</em></span>
+      </a>
+      <p>آژانس چاپ و تبلیغات پارسیک؛ شریک بصری کسب‌وکارهای بندرعباس و جنوب کشور از سال ۱۳۹۲.</p>
+    </div>
+    <div class="footer-col">
+      <h4>دسترسی سریع</h4>
+      <a href="#hero">خانه</a><a href="#portfolio">نمونه‌کارها</a><a href="#services">خدمات ما</a><a href="#about">درباره ما</a><a href="#contact">تماس با ما</a>
+    </div>
+    <div class="footer-col">
+      <h4>خدمات</h4>
+      <a href="#services">چاپ افست و دیجیتال</a><a href="#services">طراحی هویت بصری</a><a href="#services">تابلو و چلنیوم</a><a href="#services">لیبل و بسته‌بندی</a><a href="#services">هدایای تبلیغاتی</a>
+    </div>
+    <div class="footer-col">
+      <h4>تماس</h4>
+      <a href="tel:09175477500" dir="rtl"><bdi>۰۹۱۷ ۵۴۷ ۷۵۰۰</bdi></a>
+      <span>بندرعباس، مجتمع خلیج‌فارس، واحد ۲۰۸</span>
+      <span>شنبه تا پنجشنبه ۹ تا ۲۱</span>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="container"><span>© ۱۴۰۴ چاپ و تبلیغات پارسیک — تمامی حقوق محفوظ است.</span><span class="footer-latin">PARSIK PRINT &amp; ADVERTISING AGENCY</span></div></div>
+</footer>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>

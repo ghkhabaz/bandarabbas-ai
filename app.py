@@ -1,78 +1,35 @@
-from flask import Flask, request, jsonify, send_from_directory
-from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
-import torch
-import json
-import os
-import re
+"""Parsik — Printing & Advertising Agency: static site server + contact API."""
 from datetime import datetime
+from json import dumps, loads
 
-app = Flask(__name__, static_folder='.', static_url_path='')
+from flask import Flask, jsonify, request, send_from_directory
 
-# Load model
-model_name = "google/gemma-3-1b-it"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(
-    model_name,
-    torch_dtype=torch.float16,
-    device_map="auto",
-    trust_remote_code=True
-)
-pipe = pipeline(
-    "text-generation",
-    model=model,
-    tokenizer=tokenizer,
-    max_new_tokens=200,
-    temperature=0.7,
-    do_sample=True,
-    pad_token_id=tokenizer.eos_token_id
-)
+app = Flask(__name__, static_folder=".", static_url_path="")
 
-# Local data
-with open('local_data.json', 'r', encoding='utf-8') as f:
-    local_data = json.load(f)
 
-def search_local_items(query):
-    query_lower = query.lower()
-    results = []
-    
-    for category, items in local_data.items():
-        for item in items:
-            if any(word in item['name'].lower() or word in item['desc'].lower() 
-                   for word in ['رستوران', 'هتل', 'خرید', query_lower]):
-                results.append(f"{item['name']} ({category}) - {item['desc']}")
-                if len(results) >= 3:
-                    break
-        if len(results) >= 3:
-            break
-    
-    return results if results else ["اطلاعات دقیقی ندارم، ولی بندرعباس پر از گزینه‌های عالیه! 😊"]
-
-@app.route('/')
+@app.route("/")
 def home():
-    return send_from_directory('.', 'index.html')
+    return send_from_directory(".", "index.html")
 
-@app.route('/api/chat', methods=['POST'])
-def chat():
-    data = request.json
-    message = data.get('message', '')
-    
-    context = search_local_items(message)
-    prompt = f"""
-بندرعباس AI هستم! مفید و دوستانه جواب بده:
 
-کاربر: {message}
+@app.route("/api/contact", methods=["POST"])
+def contact():
+    data = request.get_json(silent=True) or {}
+    entry = {
+        "name": str(data.get("name", "")).strip()[:100],
+        "phone": str(data.get("phone", "")).strip()[:20],
+        "service": str(data.get("service", "")).strip()[:100],
+        "message": str(data.get("message", "")).strip()[:2000],
+        "received_at": datetime.now().isoformat(timespec="seconds"),
+    }
+    if not entry["name"] or not entry["phone"]:
+        return jsonify({"ok": False, "error": "نام و شماره تماس الزامی است."}), 400
+    with open("contacts.json", "a", encoding="utf-8") as f:
+        f.write(dumps(entry, ensure_ascii=False) + "\n")
+    return jsonify({"ok": True})
 
-اطلاعات محلی:
-{chr(10).join(context)}
 
-جواب مختصر و مفید (حداکثر 2 جمله):
-"""
-    
-    response = pipe(prompt)[0]['generated_text']
-    reply = response.split("جواب مختصر و مفید")[-1].strip()
-    
-    return jsonify({"reply": reply})
-
-if __name__ == '__main__':
+if __name__ == "__main__":
+    import os
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port, debug=False)
+    app.run(host="0.0.0.0", port=port, debug=os.environ.get("FLASK_DEBUG") == "1")
